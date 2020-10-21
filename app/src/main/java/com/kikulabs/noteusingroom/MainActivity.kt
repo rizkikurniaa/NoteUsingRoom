@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.kikulabs.noteusingroom.adapter.NoteAdapter
 import com.kikulabs.noteusingroom.database.NoteRoomDatabase
 import com.kikulabs.noteusingroom.entity.Note
@@ -39,14 +40,14 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecyclerView(listItems: ArrayList<Note>){
         recycler_view_main.apply {
             adapter = NoteAdapter(listItems, object : NoteAdapter.NoteListener{
-                override fun OnItemClicked(note: Note) {
+                override fun onItemClicked(note: Note) {
                     val intent = Intent(this@MainActivity, EditActivity::class.java)
                     intent.putExtra(EditActivity().EDIT_NOTE_EXTRA, note)
                     startActivity(intent)
                 }
             })
 
-            layoutManager = LinearLayoutManager(this@MainActivity)
+            layoutManager = StaggeredGridLayoutManager(2,  LinearLayoutManager.VERTICAL)
         }
     }
 

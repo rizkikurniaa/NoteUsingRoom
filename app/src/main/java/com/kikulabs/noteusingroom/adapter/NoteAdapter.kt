@@ -27,7 +27,7 @@ class NoteAdapter(
         holder.textViewTitle.text = item.title
         holder.textViewBody.text = item.body
         holder.itemView.setOnClickListener {
-            listener.OnItemClicked(item)
+            listener.onItemClicked(item)
         }
     }
 
@@ -37,6 +37,6 @@ class NoteAdapter(
     }
 
     interface NoteListener{
-        fun OnItemClicked(note: Note)
+        fun onItemClicked(note: Note)
     }
 }

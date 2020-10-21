@@ -32,8 +32,8 @@ class NoteAdapter(
     }
 
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var textViewTitle = itemView.findViewById<TextView>(R.id.text_view_title)
-        var textViewBody = itemView.findViewById<TextView>(R.id.text_view_body)
+        var textViewTitle: TextView = itemView.findViewById(R.id.text_view_title)
+        var textViewBody: TextView = itemView.findViewById(R.id.text_view_body)
     }
 
     interface NoteListener{

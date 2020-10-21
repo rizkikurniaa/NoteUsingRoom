@@ -59,7 +59,7 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
             finish()
         }
 
-        ib_back.setOnClickListener(this)
+        nib_back.setOnClickListener(this)
 
     }
 
@@ -82,7 +82,7 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.ib_back -> {
+            R.id.nib_back -> {
                 onBackPressed()
             }
         }

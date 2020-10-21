@@ -10,27 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_margin="3dp"
-            app:cardCornerRadius="8dp"
+        <soup.neumorphism.NeumorphImageButton
+            android:id="@+id/nib_back"
+            style="@style/Widget.Neumorph.ImageButton"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageButton
-                android:id="@+id/ib_back"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:background="?attr/actionBarItemBackground"
-                android:padding="5dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_back" />
-
-        </androidx.cardview.widget.CardView>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:layout_width="0dp"
@@ -38,10 +27,10 @@
             android:gravity="center_horizontal"
             android:text="Note"
             android:textColor="@android:color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/cardView"
+            app:layout_constraintBottom_toBottomOf="@+id/nib_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/cardView" />
+            app:layout_constraintTop_toTopOf="@+id/nib_back" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -23,30 +23,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_search"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="8dp"
-            app:cardCornerRadius="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_toolbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_toolbar">
 
-            <ImageButton
+            <soup.neumorphism.NeumorphImageButton
                 android:id="@+id/ib_search"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:background="?attr/actionBarItemBackground"
-                android:padding="5dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_search" />
-
-        </androidx.cardview.widget.CardView>
+                style="@style/Widget.Neumorph.ImageButton"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_search"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_toolbar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_toolbar"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

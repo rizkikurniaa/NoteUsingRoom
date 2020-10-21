@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
     tools:context=".EditActivity">
 
     <include
@@ -64,25 +63,28 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <soup.neumorphism.NeumorphButton
         android:id="@+id/button_save"
+        style="@style/Widget.Neumorph.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
         android:text="Save"
         app:layout_constraintBottom_toTopOf="@id/button_delete"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout" />
 
-    <Button
+    <soup.neumorphism.NeumorphButton
         android:id="@+id/button_delete"
+        style="@style/Widget.Neumorph.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_red_light"
         android:text="Delete"
         android:textColor="@android:color/white"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button_save"
-        app:layout_constraintStart_toStartOf="@+id/button_save" />
+        app:layout_constraintStart_toStartOf="@+id/button_save"
+        app:neumorph_backgroundColor="@android:color/holo_red_light" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

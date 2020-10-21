@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.kikulabs.noteusingroom"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -32,13 +32,16 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
     // Room components
     implementation "androidx.room:room-runtime:2.2.0-rc01"
     implementation "androidx.room:room-ktx:2.2.0-rc01"
     kapt "androidx.room:room-compiler:2.2.0-rc01"
     androidTestImplementation "androidx.room:room-testing:2.2.0-rc01"
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    //neomorphism
+    implementation 'com.github.fornewid:neumorphism:0.2.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

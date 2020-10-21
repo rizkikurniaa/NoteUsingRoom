@@ -9,12 +9,16 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar_home" />
 
-    <TextView
+    <soup.neumorphism.NeumorphTextView
         android:id="@+id/text_view_note_empty"
+        style="@style/Widget.Neumorph.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Note Empty"
+        android:text="Note is empty"
+        android:textColor="@color/background"
+        android:textSize="25sp"
+        android:textStyle="bold"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -36,15 +40,15 @@
         android:clickable="true"
         android:src="@drawable/ic_round_add" />
 
-<!--    <soup.neumorphism.NeumorphFloatingActionButton-->
-<!--        android:id="@+id/floatingActionButton"-->
-<!--        style="@style/Widget.Neumorph.FloatingActionButton"-->
-<!--        android:layout_width="88dp"-->
-<!--        android:layout_height="88dp"-->
-<!--        android:layout_margin="16dp"-->
-<!--        android:scaleType="centerInside"-->
-<!--        android:src="@drawable/ic_round_add"-->
-<!--        android:layout_alignParentRight="true"-->
-<!--        android:layout_alignParentBottom="true"/>-->
+    <!--    <soup.neumorphism.NeumorphFloatingActionButton-->
+    <!--        android:id="@+id/floatingActionButton"-->
+    <!--        style="@style/Widget.Neumorph.FloatingActionButton"-->
+    <!--        android:layout_width="88dp"-->
+    <!--        android:layout_height="88dp"-->
+    <!--        android:layout_margin="16dp"-->
+    <!--        android:scaleType="centerInside"-->
+    <!--        android:src="@drawable/ic_round_add"-->
+    <!--        android:layout_alignParentRight="true"-->
+    <!--        android:layout_alignParentBottom="true"/>-->
 
 </RelativeLayout>

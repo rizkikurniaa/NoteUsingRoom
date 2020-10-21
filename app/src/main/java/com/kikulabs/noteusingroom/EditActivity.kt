@@ -36,29 +36,8 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
 
         }
 
-        button_save.setOnClickListener {
-            val title = edit_text_title.text.toString()
-            val body = edit_text_body.text.toString()
-
-            if (title.isEmpty() && body.isEmpty()) {
-                Toast.makeText(applicationContext, "Note cannot be empty", Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                if (isUpdate) {
-                    saveNote(Note(id = note.id, title = title, body = body))
-                } else {
-                    saveNote(Note(title = title, body = body))
-                }
-            }
-
-            finish()
-        }
-
-        button_delete.setOnClickListener {
-            deleteNote(note)
-            finish()
-        }
-
+        button_save.setOnClickListener(this)
+        button_delete.setOnClickListener(this)
         nib_back.setOnClickListener(this)
 
     }
@@ -80,10 +59,31 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
         Toast.makeText(applicationContext, "Note removed", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onClick(v: View?) {
-        when (v?.id) {
+    override fun onClick(v: View) {
+        when (v.id) {
             R.id.nib_back -> {
                 onBackPressed()
+            }
+            R.id.button_save -> {
+                val title = edit_text_title.text.toString()
+                val body = edit_text_body.text.toString()
+
+                if (title.isEmpty() && body.isEmpty()) {
+                    Toast.makeText(applicationContext, "Note cannot be empty", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    if (isUpdate) {
+                        saveNote(Note(id = note.id, title = title, body = body))
+                    } else {
+                        saveNote(Note(title = title, body = body))
+                    }
+                }
+
+                finish()
+            }
+            R.id.button_delete -> {
+                deleteNote(note)
+                finish()
             }
         }
     }

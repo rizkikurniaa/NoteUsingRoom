@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.example.awesomedialog.*
 import com.kikulabs.noteusingroom.dao.NoteDao
 import com.kikulabs.noteusingroom.database.NoteRoomDatabase
 import com.kikulabs.noteusingroom.entity.Note
@@ -59,6 +61,30 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
         Toast.makeText(applicationContext, "Note removed", Toast.LENGTH_SHORT).show()
     }
 
+    private fun showDialog() {
+
+        AwesomeDialog.build(this)
+            .position(AwesomeDialog.POSITIONS.CENTER)
+            .body("The note will be permanently deleted.")
+            .icon(R.mipmap.ic_launcher)
+            .onPositive(
+                "Yes, delete",
+                buttonBackgroundColor = android.R.color.white,
+                textColor = ContextCompat.getColor(this, android.R.color.black)
+            ) {
+                deleteNote(note)
+                finish()
+            }
+            .onNegative(
+                "Cancel",
+                buttonBackgroundColor = R.drawable.bg_btn_black,
+                textColor = ContextCompat.getColor(this, android.R.color.white)
+            ) {
+
+            }
+
+    }
+
     override fun onClick(v: View) {
         when (v.id) {
             R.id.nib_back -> {
@@ -82,8 +108,7 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
                 finish()
             }
             R.id.button_delete -> {
-                deleteNote(note)
-                finish()
+                showDialog()
             }
         }
     }

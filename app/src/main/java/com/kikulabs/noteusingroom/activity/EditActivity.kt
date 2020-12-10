@@ -1,4 +1,4 @@
-package com.kikulabs.noteusingroom
+package com.kikulabs.noteusingroom.activity
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.awesomedialog.*
+import com.kikulabs.noteusingroom.R
 import com.kikulabs.noteusingroom.dao.NoteDao
 import com.kikulabs.noteusingroom.database.NoteRoomDatabase
 import com.kikulabs.noteusingroom.entity.Note

@@ -11,6 +11,7 @@
         <item name="colorAccent">@color/color_accent</item>
         <item name="android:windowBackground">@color/background</item>
         <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:fontFamily">@font/poppinsregular</item>
     </style>
 
     <style name="CustomShapeAppearance">

@@ -18,22 +18,23 @@
             android:layout_marginLeft="8dp"
             android:text="Notes"
             android:textColor="@color/colorTitle"
-            android:textSize="24sp"
+            android:textSize="22sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-            <soup.neumorphism.NeumorphImageButton
-                android:id="@+id/ib_search"
-                style="@style/Widget.Neumorph.ImageButton"
-                android:layout_width="68dp"
-                android:layout_height="68dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_search"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_toolbar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_toolbar"/>
+        <soup.neumorphism.NeumorphImageButton
+            android:id="@+id/ib_search"
+            style="@style/Widget.Neumorph.ImageButton"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_search"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_toolbar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

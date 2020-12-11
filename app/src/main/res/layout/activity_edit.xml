@@ -45,14 +45,33 @@
     </soup.neumorphism.NeumorphCardView>
 
     <soup.neumorphism.NeumorphCardView
+        android:id="@+id/ncv_label"
+        style="@style/Widget.Neumorph.CardView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/ncv_title"
+        app:layout_constraintStart_toStartOf="@+id/ncv_title"
+        app:layout_constraintTop_toBottomOf="@+id/ncv_title"
+        app:neumorph_shapeType="pressed">
+
+        <Spinner
+            android:padding="20dp"
+            android:id="@+id/sp_label"
+            android:entries="@array/labels"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </soup.neumorphism.NeumorphCardView>
+
+    <soup.neumorphism.NeumorphCardView
         android:id="@+id/ncv_note"
         style="@style/Widget.Neumorph.CardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/button_save"
-        app:layout_constraintEnd_toEndOf="@+id/ncv_title"
-        app:layout_constraintStart_toStartOf="@+id/ncv_title"
-        app:layout_constraintTop_toBottomOf="@+id/ncv_title"
+        app:layout_constraintEnd_toEndOf="@+id/ncv_label"
+        app:layout_constraintStart_toStartOf="@+id/ncv_label"
+        app:layout_constraintTop_toBottomOf="@+id/ncv_label"
         app:neumorph_shapeType="pressed">
 
         <EditText

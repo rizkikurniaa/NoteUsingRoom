@@ -37,6 +37,7 @@ dependencies {
     // Room components
     implementation "androidx.room:room-runtime:2.2.0-rc01"
     implementation "androidx.room:room-ktx:2.2.0-rc01"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "androidx.room:room-compiler:2.2.0-rc01"
     androidTestImplementation "androidx.room:room-testing:2.2.0-rc01"
 

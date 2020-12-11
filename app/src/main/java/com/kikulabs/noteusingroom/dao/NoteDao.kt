@@ -15,7 +15,7 @@ interface NoteDao {
     @Delete
     fun delete(note: Note)
 
-    @Query("SELECT * FROM notes")
+    @Query("SELECT * FROM notes ORDER BY id DESC")
     fun getAll() : List<Note>
 
     @Query("SELECT * FROM notes WHERE id = :id")
@@ -23,4 +23,7 @@ interface NoteDao {
 
     @Query("SELECT * FROM notes WHERE title LIKE :search")
     fun getByTitle(search: String?): List<Note>
+
+    @Query("SELECT * FROM notes WHERE label = :id ORDER BY id DESC")
+    fun getByLabel(id: String) : List<Note>
 }

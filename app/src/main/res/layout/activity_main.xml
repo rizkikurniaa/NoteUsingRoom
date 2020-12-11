@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,24 +10,22 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar_home" />
 
-    <soup.neumorphism.NeumorphTextView
-        android:id="@+id/text_view_note_empty"
-        style="@style/Widget.Neumorph.TextView"
-        android:layout_width="wrap_content"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Note is empty"
-        android:textColor="@color/background"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:visibility="gone" />
+        android:layout_below="@id/toolbar"
+        android:background="@color/background"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/colorTitle"
+        app:tabTextAppearance="@style/MyCustomTextAppearance"
+        app:tabTextColor="@color/colorGrey" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_main"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        tools:listitem="@layout/list_item" />
+        android:layout_below="@id/tabs" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -39,16 +38,5 @@
         android:layout_marginBottom="16dp"
         android:clickable="true"
         android:src="@drawable/ic_round_add" />
-
-    <!--    <soup.neumorphism.NeumorphFloatingActionButton-->
-    <!--        android:id="@+id/floatingActionButton"-->
-    <!--        style="@style/Widget.Neumorph.FloatingActionButton"-->
-    <!--        android:layout_width="88dp"-->
-    <!--        android:layout_height="88dp"-->
-    <!--        android:layout_margin="16dp"-->
-    <!--        android:scaleType="centerInside"-->
-    <!--        android:src="@drawable/ic_round_add"-->
-    <!--        android:layout_alignParentRight="true"-->
-    <!--        android:layout_alignParentBottom="true"/>-->
 
 </RelativeLayout>

@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">NoteUsingRoom</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_all">All</string>
+    <string name="tab_personal">Personal</string>
+    <string name="tab_work">Work</string>
+    <string name="tab_study">Study</string>
+
+    <string-array name="labels">
+        <item>Personal</item>
+        <item>Work</item>
+        <item>Study</item>
+    </string-array>
 </resources>

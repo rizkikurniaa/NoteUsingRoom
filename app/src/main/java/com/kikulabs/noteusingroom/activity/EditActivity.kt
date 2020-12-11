@@ -1,5 +1,6 @@
 package com.kikulabs.noteusingroom.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -74,6 +75,9 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
                 textColor = ContextCompat.getColor(this, android.R.color.black)
             ) {
                 deleteNote(note)
+                val intent = Intent(this@EditActivity, MainActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
                 finish()
             }
             .onNegative(
@@ -94,18 +98,21 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
             R.id.button_save -> {
                 val title = edit_text_title.text.toString()
                 val body = edit_text_body.text.toString()
+                val label = sp_label.selectedItem.toString()
 
                 if (title.isEmpty() && body.isEmpty()) {
                     Toast.makeText(applicationContext, "Note cannot be empty", Toast.LENGTH_SHORT)
                         .show()
                 } else {
                     if (isUpdate) {
-                        saveNote(Note(id = note.id, title = title, body = body))
+                        saveNote(Note(id = note.id, title = title, label = label, body = body))
                     } else {
-                        saveNote(Note(title = title, body = body))
+                        saveNote(Note(title = title, label = label, body = body))
                     }
                 }
-
+                val intent = Intent(this@EditActivity, MainActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
                 finish()
             }
             R.id.button_delete -> {

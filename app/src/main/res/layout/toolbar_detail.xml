@@ -19,13 +19,13 @@
             android:src="@drawable/ic_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Note"
+            android:text="@string/note"
             android:textColor="@color/colorTitle"
             app:layout_constraintBottom_toBottomOf="@+id/nib_back"
             app:layout_constraintEnd_toEndOf="parent"

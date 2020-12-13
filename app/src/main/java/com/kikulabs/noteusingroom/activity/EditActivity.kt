@@ -10,11 +10,11 @@ import com.example.awesomedialog.*
 import com.kikulabs.noteusingroom.R
 import com.kikulabs.noteusingroom.dao.NoteDao
 import com.kikulabs.noteusingroom.database.NoteRoomDatabase
+import com.kikulabs.noteusingroom.databinding.ActivityEditBinding
 import com.kikulabs.noteusingroom.entity.Note
-import kotlinx.android.synthetic.main.activity_edit.*
-import kotlinx.android.synthetic.main.toolbar_detail.*
 
 class EditActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityEditBinding
     val EDIT_NOTE_EXTRA = "edit_note_extra"
     private lateinit var note: Note
     private var isUpdate = false
@@ -24,26 +24,35 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit)
+        binding = ActivityEditBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        initView()
+        initListener()
+
+    }
+
+    private fun initView() {
         database = NoteRoomDatabase.getDatabase(applicationContext)
         dao = database.getNoteDao()
 
         if (intent.getParcelableExtra<Note>(EDIT_NOTE_EXTRA) != null) {
-            button_delete.visibility = View.VISIBLE
-            isUpdate = true
-            note = intent.getParcelableExtra(EDIT_NOTE_EXTRA)!!
-            edit_text_title.setText(note.title)
-            edit_text_body.setText(note.body)
 
-            edit_text_title.setSelection(note.title.length)
+            isUpdate = true
+            binding.buttonDelete.visibility = View.VISIBLE
+            note = intent.getParcelableExtra(EDIT_NOTE_EXTRA)!!
+            binding.editTextTitle.setText(note.title)
+            binding.editTextBody.setText(note.body)
+
+            binding.editTextTitle.setSelection(note.title.length)
 
         }
+    }
 
-        button_save.setOnClickListener(this)
-        button_delete.setOnClickListener(this)
-        nib_back.setOnClickListener(this)
-
+    private fun initListener() {
+        binding.buttonSave.setOnClickListener(this)
+        binding.buttonDelete.setOnClickListener(this)
+        binding.toolbar.nibBack.setOnClickListener(this)
     }
 
     private fun saveNote(note: Note) {
@@ -96,9 +105,9 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
                 onBackPressed()
             }
             R.id.button_save -> {
-                val title = edit_text_title.text.toString()
-                val body = edit_text_body.text.toString()
-                val label = sp_label.selectedItem.toString()
+                val title = binding.editTextTitle.text.toString()
+                val body = binding.editTextBody.text.toString()
+                val label = binding.spLabel.selectedItem.toString()
 
                 if (title.isEmpty() && body.isEmpty()) {
                     Toast.makeText(applicationContext, "Note cannot be empty", Toast.LENGTH_SHORT)

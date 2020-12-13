@@ -8,27 +8,30 @@ import android.widget.AutoCompleteTextView
 import android.widget.LinearLayout
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.kikulabs.noteusingroom.R
 import com.kikulabs.noteusingroom.adapter.NoteAdapter
-import com.kikulabs.noteusingroom.dao.NoteDao
-import com.kikulabs.noteusingroom.database.NoteRoomDatabase
+import com.kikulabs.noteusingroom.databinding.ActivitySearchBinding
 import com.kikulabs.noteusingroom.entity.Note
-import kotlinx.android.synthetic.main.activity_search.*
+import com.kikulabs.noteusingroom.viewModel.NotesViewModel
 import kotlinx.android.synthetic.main.toolbar_search.*
 
 class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View.OnClickListener {
-    private lateinit var dao: NoteDao
-    private val listItems = arrayListOf<Note>()
+    private lateinit var binding: ActivitySearchBinding
+    private lateinit var listNoteAdapter: NoteAdapter
+    private lateinit var notesViewModel: NotesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search)
+        binding = ActivitySearchBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initView()
+        initViewModel()
         initListener()
-        getNotesData()
     }
 
     private fun initView() {
@@ -47,36 +50,41 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View
         search_notes.setOnQueryTextListener(this)
         search_notes.isFocusable = false
 
-        val database = NoteRoomDatabase.getDatabase(applicationContext)
-        dao = database.getNoteDao()
+        binding.rvNotes.setHasFixedSize(true)
+        listNoteAdapter = NoteAdapter()
+        listNoteAdapter.notifyDataSetChanged()
+
+        binding.rvNotes.layoutManager =
+            StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        binding.rvNotes.adapter = listNoteAdapter
+
+        listNoteAdapter.setOnClicked(object : NoteAdapter.NoteListener {
+            override fun onItemClicked(note: Note) {
+                val intent = Intent(this@SearchActivity, EditActivity::class.java)
+                intent.putExtra(EditActivity().EDIT_NOTE_EXTRA, note)
+                startActivity(intent)
+            }
+
+        })
+
     }
 
-    private fun getNotesData() {
-        listItems.addAll(dao.getAll())
-        setupRecyclerView(listItems)
+    private fun initViewModel() {
+        notesViewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
 
-        if (listItems.isNotEmpty()) {
-            tv_note_empty.visibility = View.GONE
-        } else {
-            tv_note_empty.visibility = View.VISIBLE
-        }
-    }
+        notesViewModel.getNotes().observe(this, Observer { notes ->
+            if (notes.isNotEmpty()) {
+                listNoteAdapter.setData(notes)
+                binding.tvNoteEmpty.visibility = View.GONE
+            } else {
+                binding.tvNoteEmpty.visibility = View.VISIBLE
+            }
+        })
 
-    private fun setupRecyclerView(listItems: ArrayList<Note>) {
-        rv_notes.apply {
-            adapter = NoteAdapter(listItems, object : NoteAdapter.NoteListener {
-                override fun onItemClicked(note: Note) {
-                    val intent = Intent(this@SearchActivity, EditActivity::class.java)
-                    intent.putExtra(EditActivity().EDIT_NOTE_EXTRA, note)
-                    startActivity(intent)
-                }
-            })
-
-            layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
-        }
     }
 
     private fun initListener() {
+        notesViewModel.setNotes()
         nib_back.setOnClickListener(this)
     }
 
@@ -85,15 +93,8 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View
     }
 
     override fun onQueryTextChange(keyWord: String?): Boolean {
-        listItems.clear()
-        listItems.addAll(dao.getByTitle("%${keyWord}%"))
-        setupRecyclerView(listItems)
-
-        if (listItems.isNotEmpty()) {
-            tv_note_empty.visibility = View.GONE
-        } else {
-            tv_note_empty.visibility = View.VISIBLE
-            tv_note_empty.text = "Note not found"
+        if (keyWord != null) {
+            notesViewModel.setNotesByTitle("%${keyWord}%")
         }
 
         return true

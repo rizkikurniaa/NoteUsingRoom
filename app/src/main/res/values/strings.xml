@@ -5,6 +5,7 @@
     <string name="tab_personal">Personal</string>
     <string name="tab_work">Work</string>
     <string name="tab_study">Study</string>
+    <string name="note">Note</string>
 
     <string-array name="labels">
         <item>Personal</item>

@@ -2,62 +2,79 @@ package com.kikulabs.noteusingroom.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.kikulabs.noteusingroom.R
 import com.kikulabs.noteusingroom.activity.EditActivity
 import com.kikulabs.noteusingroom.adapter.NoteAdapter
-import com.kikulabs.noteusingroom.database.NoteRoomDatabase
+import com.kikulabs.noteusingroom.databinding.FragmentStudyNotesBinding
 import com.kikulabs.noteusingroom.entity.Note
-import kotlinx.android.synthetic.main.fragment_all_notes.*
-import kotlinx.android.synthetic.main.fragment_all_notes.text_view_note_empty
-import kotlinx.android.synthetic.main.fragment_personal_notes.*
-import kotlinx.android.synthetic.main.fragment_study_notes.*
+import com.kikulabs.noteusingroom.viewModel.NotesViewModel
 
 class StudyNotesFragment : Fragment() {
+    private var _binding: FragmentStudyNotesBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var listNoteAdapter: NoteAdapter
+    private lateinit var notesViewModel: NotesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_study_notes, container, false)
+        _binding = FragmentStudyNotesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getNotesData()
+        initView()
+        initViewModel()
+        initListener()
+
     }
 
-    private fun getNotesData() {
-        val database = NoteRoomDatabase.getDatabase(requireContext())
-        val dao = database.getNoteDao()
-        val listItems = arrayListOf<Note>()
-        listItems.addAll(dao.getByLabel("Study"))
-        setupRecyclerView(listItems)
-        if (listItems.isNotEmpty()) {
-            text_view_note_empty.visibility = View.GONE
-        } else {
-            text_view_note_empty.visibility = View.VISIBLE
-        }
+    private fun initView() {
+
+        binding.rvStudy.setHasFixedSize(true)
+        listNoteAdapter = NoteAdapter()
+        listNoteAdapter.notifyDataSetChanged()
+
+        binding.rvStudy.layoutManager =
+            StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        binding.rvStudy.adapter = listNoteAdapter
+
+        listNoteAdapter.setOnClicked(object : NoteAdapter.NoteListener {
+            override fun onItemClicked(note: Note) {
+                val intent = Intent(context, EditActivity::class.java)
+                intent.putExtra(EditActivity().EDIT_NOTE_EXTRA, note)
+                startActivity(intent)
+            }
+
+        })
+
     }
 
-    private fun setupRecyclerView(listItems: ArrayList<Note>) {
-        rv_study.apply {
-            adapter = NoteAdapter(listItems, object : NoteAdapter.NoteListener {
-                override fun onItemClicked(note: Note) {
-                    val intent = Intent(context, EditActivity::class.java)
-                    intent.putExtra(EditActivity().EDIT_NOTE_EXTRA, note)
-                    startActivity(intent)
-                }
-            })
+    private fun initViewModel() {
+        notesViewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
 
-            layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
-        }
+        notesViewModel.getNotes().observe(viewLifecycleOwner, Observer { notes ->
+            if (notes.isNotEmpty()) {
+                listNoteAdapter.setData(notes)
+                binding.textViewNoteEmpty.visibility = View.GONE
+            } else {
+                binding.textViewNoteEmpty.visibility = View.VISIBLE
+            }
+        })
+
+    }
+
+    private fun initListener() {
+        notesViewModel.setNotesByLabel("Study")
     }
 }

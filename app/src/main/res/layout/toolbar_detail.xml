@@ -28,9 +28,20 @@
             android:text="@string/note"
             android:textColor="@color/colorTitle"
             app:layout_constraintBottom_toBottomOf="@+id/nib_back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/nib_edit"
+            app:layout_constraintStart_toEndOf="@+id/nib_back"
             app:layout_constraintTop_toTopOf="@+id/nib_back" />
+
+        <soup.neumorphism.NeumorphImageButton
+            android:id="@+id/nib_edit"
+            style="@style/Widget.Neumorph.ImageButton"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

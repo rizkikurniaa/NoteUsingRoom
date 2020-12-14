@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kikulabs.noteusingroom.R
 import com.kikulabs.noteusingroom.databinding.ListItemBinding
 import com.kikulabs.noteusingroom.entity.Note
+import com.kikulabs.noteusingroom.method.DateChange
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     private val dataNotes = ArrayList<Note>()
@@ -32,9 +33,11 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
+        val dateChange = DateChange()
         val item = dataNotes[position]
         with(holder) {
             binding.textViewTitle.text = item.title
+            binding.tvDate.text = dateChange.changeFormatDate(item.date)
             binding.textViewBody.text = item.body
             itemView.setOnClickListener {
                 listener.onItemClicked(item)

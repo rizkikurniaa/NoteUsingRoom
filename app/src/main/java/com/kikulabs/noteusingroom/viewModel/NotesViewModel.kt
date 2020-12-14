@@ -39,6 +39,18 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
         listNotes.postValue(listItems)
     }
 
+    fun insertNote(note: Note){
+        dao.insert(note)
+    }
+
+    fun updateNote(note: Note){
+        dao.update(note)
+    }
+
+    fun deleteNote(note: Note){
+        dao.delete(note)
+    }
+
     fun getNotes(): LiveData<ArrayList<Note>> {
         return listNotes
     }

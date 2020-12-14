@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.kikulabs.noteusingroom.activity.EditActivity
+import com.kikulabs.noteusingroom.activity.DetailNoteActivity
 import com.kikulabs.noteusingroom.adapter.NoteAdapter
 import com.kikulabs.noteusingroom.databinding.FragmentAllNotesBinding
 import com.kikulabs.noteusingroom.entity.Note
@@ -50,8 +50,8 @@ class AllNotesFragment : Fragment() {
 
         listNoteAdapter.setOnClicked(object : NoteAdapter.NoteListener {
             override fun onItemClicked(note: Note) {
-                val intent = Intent(context, EditActivity::class.java)
-                intent.putExtra(EditActivity().editNoteExtra, note)
+                val intent = Intent(context, DetailNoteActivity::class.java)
+                intent.putExtra(DetailNoteActivity().editNoteExtra, note)
                 startActivity(intent)
             }
 

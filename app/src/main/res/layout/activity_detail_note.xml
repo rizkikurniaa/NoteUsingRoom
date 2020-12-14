@@ -13,12 +13,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/cl_menu"
         android:layout_below="@id/toolbar"
         android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/tv_title"
@@ -59,5 +60,43 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/background"
+        android:elevation="8dp">
+
+        <TextView
+            android:id="@+id/tv_edited"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ib_menu"
+            app:layout_constraintEnd_toStartOf="@+id/ib_menu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ib_menu"
+            tools:text="Last edited 21 Nov" />
+
+        <ImageButton
+            android:id="@+id/ib_menu"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            android:background="?attr/actionBarItemBackground"
+            android:contentDescription="@string/menu"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_menu"
+            android:tint="@color/colorTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

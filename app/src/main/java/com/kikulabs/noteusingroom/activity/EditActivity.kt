@@ -76,7 +76,7 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun deleteNote(note: Note) {
         notesViewModel.deleteNote(note)
-        Toast.makeText(applicationContext, "Note removed", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@EditActivity, "Note removed", Toast.LENGTH_SHORT).show()
     }
 
     private fun showDialog() {
@@ -113,8 +113,8 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
                 val body = binding.editTextBody.text.toString()
                 val label = binding.spLabel.selectedItem.toString()
 
-                if (title.isEmpty() || body.isEmpty()) {
-                    Toast.makeText(applicationContext, "Note cannot be empty", Toast.LENGTH_SHORT)
+                if (title.isEmpty() && body.isEmpty()) {
+                    Toast.makeText(this@EditActivity, "Note cannot be empty", Toast.LENGTH_SHORT)
                         .show()
                 } else {
                     if (isUpdate) {
@@ -129,9 +129,11 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
                     } else {
                         notesViewModel.insertNote(Note(title = title, label = label, body = body))
                     }
+
+                    Toast.makeText(this@EditActivity, "Note saved", Toast.LENGTH_SHORT).show()
+                    finish()
                 }
 
-                finish()
             }
             R.id.button_delete -> {
                 showDialog()

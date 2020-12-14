@@ -52,7 +52,7 @@ class PersonalNotesFragment : Fragment() {
         listNoteAdapter.setOnClicked(object : NoteAdapter.NoteListener {
             override fun onItemClicked(note: Note) {
                 val intent = Intent(context, EditActivity::class.java)
-                intent.putExtra(EditActivity().EDIT_NOTE_EXTRA, note)
+                intent.putExtra(EditActivity().editNoteExtra, note)
                 startActivity(intent)
             }
 
@@ -64,16 +64,25 @@ class PersonalNotesFragment : Fragment() {
         notesViewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
 
         notesViewModel.getNotes().observe(viewLifecycleOwner, Observer { notes ->
+
             if (notes.isNotEmpty()) {
-                listNoteAdapter.setData(notes)
                 binding.textViewNoteEmpty.visibility = View.GONE
             } else {
                 binding.textViewNoteEmpty.visibility = View.VISIBLE
             }
+
+            listNoteAdapter.setData(notes)
         })
     }
 
     private fun initListener() {
         notesViewModel.setNotesByLabel("Personal")
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        //update list
+        initListener()
     }
 }

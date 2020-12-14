@@ -61,7 +61,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View
         listNoteAdapter.setOnClicked(object : NoteAdapter.NoteListener {
             override fun onItemClicked(note: Note) {
                 val intent = Intent(this@SearchActivity, EditActivity::class.java)
-                intent.putExtra(EditActivity().EDIT_NOTE_EXTRA, note)
+                intent.putExtra(EditActivity().editNoteExtra, note)
                 startActivity(intent)
             }
 

@@ -2,6 +2,7 @@ package com.kikulabs.noteusingroom.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +53,7 @@ class StudyNotesFragment : Fragment() {
         listNoteAdapter.setOnClicked(object : NoteAdapter.NoteListener {
             override fun onItemClicked(note: Note) {
                 val intent = Intent(context, EditActivity::class.java)
-                intent.putExtra(EditActivity().EDIT_NOTE_EXTRA, note)
+                intent.putExtra(EditActivity().editNoteExtra, note)
                 startActivity(intent)
             }
 
@@ -65,16 +66,24 @@ class StudyNotesFragment : Fragment() {
 
         notesViewModel.getNotes().observe(viewLifecycleOwner, Observer { notes ->
             if (notes.isNotEmpty()) {
-                listNoteAdapter.setData(notes)
                 binding.textViewNoteEmpty.visibility = View.GONE
             } else {
                 binding.textViewNoteEmpty.visibility = View.VISIBLE
             }
+
+            listNoteAdapter.setData(notes)
         })
 
     }
 
     private fun initListener() {
         notesViewModel.setNotesByLabel("Study")
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        //update list
+        initListener()
     }
 }

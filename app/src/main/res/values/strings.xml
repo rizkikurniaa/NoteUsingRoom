@@ -12,6 +12,8 @@
     <string name="title">Title</string>
     <string name="write_a_note" tools:ignore="TypographyEllipsis">Write a note...</string>
     <string name="delete">Delete</string>
+    <string name="share">Share</string>
+    <string name="menu">Menu</string>
 
     <string-array name="labels">
         <item>Personal</item>

@@ -8,7 +8,7 @@ import com.kikulabs.noteusingroom.dao.NoteDao
 import com.kikulabs.noteusingroom.entity.Note
 
 //Database annotation to specify the entities and set version
-@Database(entities = [Note::class], version = 2, exportSchema = false)
+@Database(entities = [Note::class], version = 3, exportSchema = false)
 abstract class NoteRoomDatabase : RoomDatabase() {
 
     companion object {

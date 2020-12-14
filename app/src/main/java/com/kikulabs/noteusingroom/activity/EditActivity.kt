@@ -1,5 +1,6 @@
 package com.kikulabs.noteusingroom.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -11,6 +12,7 @@ import com.example.awesomedialog.*
 import com.kikulabs.noteusingroom.R
 import com.kikulabs.noteusingroom.databinding.ActivityEditBinding
 import com.kikulabs.noteusingroom.entity.Note
+import com.kikulabs.noteusingroom.method.DateChange
 import com.kikulabs.noteusingroom.viewModel.NotesViewModel
 
 
@@ -20,6 +22,7 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var notesViewModel: NotesViewModel
     private lateinit var note: Note
     private var isUpdate = false
+    private val dateChange = DateChange()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +64,7 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
             binding.spLabel.setSelection(spinnerPosition)
 
         }
+
     }
 
     private fun initViewModel() {
@@ -69,9 +73,9 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private fun initListener() {
-        binding.buttonSave.setOnClickListener(this)
-        binding.buttonDelete.setOnClickListener(this)
         binding.toolbar.nibBack.setOnClickListener(this)
+        binding.toolbar.btnSave.setOnClickListener(this)
+        binding.buttonDelete.setOnClickListener(this)
     }
 
     private fun deleteNote(note: Note) {
@@ -91,6 +95,9 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
                 textColor = ContextCompat.getColor(this, android.R.color.black)
             ) {
                 deleteNote(note)
+                val intent = Intent(this, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
                 finish()
             }
             .onNegative(
@@ -108,10 +115,12 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
             R.id.nib_back -> {
                 onBackPressed()
             }
-            R.id.button_save -> {
+            R.id.btn_save -> {
                 val title = binding.editTextTitle.text.toString()
                 val body = binding.editTextBody.text.toString()
                 val label = binding.spLabel.selectedItem.toString()
+                val date = dateChange.getToday()
+                val time = dateChange.getTime()
 
                 if (title.isEmpty() && body.isEmpty()) {
                     Toast.makeText(this@EditActivity, "Note cannot be empty", Toast.LENGTH_SHORT)
@@ -123,14 +132,21 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
                                 id = note.id,
                                 title = title,
                                 label = label,
+                                date = note.date,
+                                time = note.time,
+                                updatedDate = date,
+                                updatedTime = time,
                                 body = body
                             )
                         )
                     } else {
-                        notesViewModel.insertNote(Note(title = title, label = label, body = body))
+                        notesViewModel.insertNote(Note(title = title, label = label, date = date, time = time, body = body))
                     }
 
                     Toast.makeText(this@EditActivity, "Note saved", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
                     finish()
                 }
 

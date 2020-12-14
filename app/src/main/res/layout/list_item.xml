@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <soup.neumorphism.NeumorphCardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/card_view_item"
-        style="@style/Widget.Neumorph.CardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<soup.neumorphism.NeumorphCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view_item"
+    style="@style/Widget.Neumorph.CardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -44,8 +43,8 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="4"
-            android:textSize="12sp"
             android:paddingBottom="8dp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/text_view_title"
             app:layout_constraintStart_toStartOf="@+id/text_view_title"
             app:layout_constraintTop_toBottomOf="@+id/text_view_title"
@@ -53,4 +52,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </soup.neumorphism.NeumorphCardView>
+</soup.neumorphism.NeumorphCardView>

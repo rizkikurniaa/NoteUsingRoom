@@ -41,7 +41,7 @@ class DateChange {
 
     fun getTime(): String {
         @SuppressLint("SimpleDateFormat") val dateFormat: DateFormat =
-            SimpleDateFormat("HH:mm:ss")
+            SimpleDateFormat("HH:mm")
         return dateFormat.format(Calendar.getInstance().time)
     }
 }

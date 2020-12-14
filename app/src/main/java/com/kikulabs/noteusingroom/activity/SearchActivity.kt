@@ -60,8 +60,8 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View
 
         listNoteAdapter.setOnClicked(object : NoteAdapter.NoteListener {
             override fun onItemClicked(note: Note) {
-                val intent = Intent(this@SearchActivity, EditActivity::class.java)
-                intent.putExtra(EditActivity().editNoteExtra, note)
+                val intent = Intent(this@SearchActivity, DetailNoteActivity::class.java)
+                intent.putExtra(DetailNoteActivity().editNoteExtra, note)
                 startActivity(intent)
             }
 
@@ -74,11 +74,12 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View
 
         notesViewModel.getNotes().observe(this, Observer { notes ->
             if (notes.isNotEmpty()) {
-                listNoteAdapter.setData(notes)
                 binding.tvNoteEmpty.visibility = View.GONE
             } else {
                 binding.tvNoteEmpty.visibility = View.VISIBLE
             }
+
+            listNoteAdapter.setData(notes)
         })
 
     }

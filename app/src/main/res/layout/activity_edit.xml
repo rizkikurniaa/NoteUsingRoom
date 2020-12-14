@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar_detail"
+        layout="@layout/toolbar_edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="12dp"
             android:background="@null"
-            android:hint="Title"
+            android:hint="@string/title"
             android:inputType="textCapWords"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +68,7 @@
         style="@style/Widget.Neumorph.CardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_save"
+        app:layout_constraintBottom_toTopOf="@+id/button_delete"
         app:layout_constraintEnd_toEndOf="@+id/ncv_label"
         app:layout_constraintStart_toStartOf="@+id/ncv_label"
         app:layout_constraintTop_toBottomOf="@+id/ncv_label"
@@ -84,7 +84,7 @@
             android:layout_marginBottom="8dp"
             android:background="@null"
             android:gravity="top|start"
-            android:hint="Write a note..."
+            android:hint="@string/write_a_note"
             android:inputType="textMultiLine|textCapSentences"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -94,27 +94,16 @@
     </soup.neumorphism.NeumorphCardView>
 
     <soup.neumorphism.NeumorphButton
-        android:id="@+id/button_save"
-        style="@style/Widget.Neumorph.Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:drawablePadding="8dp"
-        android:text="Save"
-        app:layout_constraintBottom_toTopOf="@id/button_delete"
-        app:layout_constraintEnd_toEndOf="@+id/ncv_note"
-        app:layout_constraintStart_toStartOf="@+id/ncv_note" />
-
-    <soup.neumorphism.NeumorphButton
         android:id="@+id/button_delete"
         style="@style/Widget.Neumorph.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Delete"
-        android:textColor="@android:color/white"
+        android:text="@string/delete"
         android:visibility="gone"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button_save"
-        app:layout_constraintStart_toStartOf="@+id/button_save"
+        app:layout_constraintEnd_toEndOf="@+id/ncv_note"
+        app:layout_constraintStart_toStartOf="@+id/ncv_note"
         app:neumorph_backgroundColor="@android:color/holo_red_light" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

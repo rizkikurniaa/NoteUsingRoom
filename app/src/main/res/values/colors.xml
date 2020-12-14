@@ -9,4 +9,5 @@
     <color name="nav_bar_scrim">@color/background</color>
     <bool name="use_light_nav_bar">false</bool>
     <color name="colorGrey">#D1D1D1</color>
+    <color name="colorBgBtn">#000000</color>
 </resources>

@@ -4,7 +4,7 @@
 
     <!-- view background color -->
     <solid
-        android:color="@color/colorBgBtn">
+        android:color="@color/background">
     </solid>
 
     <!-- Here is the corner radius -->

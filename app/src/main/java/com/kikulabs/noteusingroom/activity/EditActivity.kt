@@ -87,12 +87,13 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
 
         AwesomeDialog.build(this)
             .position(AwesomeDialog.POSITIONS.CENTER)
-            .body("The note will be permanently deleted.")
+            .body("The note will be permanently deleted.", color = ContextCompat.getColor(this, R.color.colorTitle))
+            .background(R.drawable.background_dialog)
             .icon(R.mipmap.ic_launcher)
             .onPositive(
                 "Yes, delete",
-                buttonBackgroundColor = android.R.color.white,
-                textColor = ContextCompat.getColor(this, android.R.color.black)
+                buttonBackgroundColor = android.R.color.transparent,
+                textColor = ContextCompat.getColor(this, R.color.colorTitle)
             ) {
                 deleteNote(note)
                 val intent = Intent(this, MainActivity::class.java)
@@ -103,7 +104,7 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
             .onNegative(
                 "Cancel",
                 buttonBackgroundColor = R.drawable.bg_btn_black,
-                textColor = ContextCompat.getColor(this, android.R.color.white)
+                textColor = ContextCompat.getColor(this, R.color.background)
             ) {
 
             }

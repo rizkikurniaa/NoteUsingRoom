@@ -4,4 +4,5 @@
     <color name="background">#19191E</color>
     <color name="colorTitle">#FFFFFF</color>
     <color name="colorGrey">#D1D1D1</color>
+    <color name="colorBgBtn">#FFFFFF</color>
 </resources>

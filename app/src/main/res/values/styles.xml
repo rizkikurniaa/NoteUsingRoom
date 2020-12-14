@@ -12,6 +12,7 @@
         <item name="android:windowBackground">@color/background</item>
         <item name="android:navigationBarColor">@color/background</item>
         <item name="android:fontFamily">@font/poppinsregular</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
     <style name="CustomShapeAppearance">
@@ -22,5 +23,15 @@
     </style>
     <style name="MyCustomTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottomsheet_bg</item>
     </style>
 </resources>

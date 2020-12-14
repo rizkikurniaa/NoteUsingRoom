@@ -16,5 +16,9 @@ data class Note(
     @PrimaryKey(autoGenerate = true)@ColumnInfo(name = "id") var id: Int = 0,
     @ColumnInfo(name = "title") var title: String = "",
     @ColumnInfo(name = "label") var label: String = "",
+    @ColumnInfo(name = "date") var date: String = "",
+    @ColumnInfo(name = "time") var time: String = "",
+    @ColumnInfo(name = "updatedDate") var updatedDate: String = "",
+    @ColumnInfo(name = "updatedTime") var updatedTime: String = "",
     @ColumnInfo(name = "body") var body: String = ""
 ) : Parcelable

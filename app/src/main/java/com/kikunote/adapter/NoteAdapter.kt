@@ -1,13 +1,13 @@
-package com.kikulabs.noteusingroom.adapter
+package com.kikunote.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.kikulabs.noteusingroom.R
-import com.kikulabs.noteusingroom.databinding.ListItemBinding
-import com.kikulabs.noteusingroom.entity.Note
-import com.kikulabs.noteusingroom.method.DateChange
+import com.kikunote.R
+import com.kikunote.databinding.ListItemBinding
+import com.kikunote.entity.Note
+import com.kikunote.method.DateChange
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     private val dataNotes = ArrayList<Note>()

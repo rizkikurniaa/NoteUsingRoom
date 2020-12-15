@@ -1,7 +1,7 @@
-package com.kikulabs.noteusingroom.dao
+package com.kikunote.dao
 
 import androidx.room.*
-import com.kikulabs.noteusingroom.entity.Note
+import com.kikunote.entity.Note
 
 @Dao
 interface NoteDao {

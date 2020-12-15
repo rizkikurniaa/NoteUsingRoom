@@ -1,4 +1,4 @@
-package com.kikulabs.noteusingroom.activity
+package com.kikunote.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,12 +10,12 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.awesomedialog.*
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.kikulabs.noteusingroom.R
-import com.kikulabs.noteusingroom.databinding.ActivityDetailNoteBinding
-import com.kikulabs.noteusingroom.databinding.BottomsheetNoteBinding
-import com.kikulabs.noteusingroom.entity.Note
-import com.kikulabs.noteusingroom.method.DateChange
-import com.kikulabs.noteusingroom.viewModel.NotesViewModel
+import com.kikunote.R
+import com.kikunote.databinding.ActivityDetailNoteBinding
+import com.kikunote.databinding.BottomsheetNoteBinding
+import com.kikunote.entity.Note
+import com.kikunote.method.DateChange
+import com.kikunote.viewModel.NotesViewModel
 
 class DetailNoteActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityDetailNoteBinding

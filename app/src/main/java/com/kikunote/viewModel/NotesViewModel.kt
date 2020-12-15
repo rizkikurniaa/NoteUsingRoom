@@ -1,12 +1,12 @@
-package com.kikulabs.noteusingroom.viewModel
+package com.kikunote.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.kikulabs.noteusingroom.dao.NoteDao
-import com.kikulabs.noteusingroom.database.NoteRoomDatabase
-import com.kikulabs.noteusingroom.entity.Note
+import com.kikunote.dao.NoteDao
+import com.kikunote.database.NoteRoomDatabase
+import com.kikunote.entity.Note
 
 class NotesViewModel(application: Application) : AndroidViewModel(application) {
     private val context = getApplication<Application>().applicationContext

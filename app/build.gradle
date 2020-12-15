@@ -12,7 +12,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.kikulabs.noteusingroom"
+        applicationId "com.kikunote"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -51,8 +51,10 @@ dependencies {
 
     //neomorphism
     implementation 'com.github.fornewid:neumorphism:0.2.1'
+
     //awesome dialog
     implementation 'com.github.chnouman:AwesomeDialog:1.0.4'
+    
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

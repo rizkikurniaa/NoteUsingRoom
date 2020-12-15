@@ -1,4 +1,4 @@
-package com.kikulabs.noteusingroom.method
+package com.kikunote.method
 
 import android.annotation.SuppressLint
 import java.text.DateFormat

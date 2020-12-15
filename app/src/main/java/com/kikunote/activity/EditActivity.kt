@@ -1,4 +1,4 @@
-package com.kikulabs.noteusingroom.activity
+package com.kikunote.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,11 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.awesomedialog.*
-import com.kikulabs.noteusingroom.R
-import com.kikulabs.noteusingroom.databinding.ActivityEditBinding
-import com.kikulabs.noteusingroom.entity.Note
-import com.kikulabs.noteusingroom.method.DateChange
-import com.kikulabs.noteusingroom.viewModel.NotesViewModel
+import com.kikunote.R
+import com.kikunote.databinding.ActivityEditBinding
+import com.kikunote.entity.Note
+import com.kikunote.method.DateChange
+import com.kikunote.viewModel.NotesViewModel
 
 
 class EditActivity : AppCompatActivity(), View.OnClickListener {
@@ -141,7 +141,15 @@ class EditActivity : AppCompatActivity(), View.OnClickListener {
                             )
                         )
                     } else {
-                        notesViewModel.insertNote(Note(title = title, label = label, date = date, time = time, body = body))
+                        notesViewModel.insertNote(
+                            Note(
+                                title = title,
+                                label = label,
+                                date = date,
+                                time = time,
+                                body = body
+                            )
+                        )
                     }
 
                     Toast.makeText(this@EditActivity, "Note saved", Toast.LENGTH_SHORT).show()

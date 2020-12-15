@@ -1,4 +1,4 @@
-package com.kikulabs.noteusingroom.adapter
+package com.kikunote.adapter
 
 import android.content.Context
 import androidx.annotation.Nullable
@@ -6,11 +6,11 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.kikulabs.noteusingroom.R
-import com.kikulabs.noteusingroom.fragment.AllNotesFragment
-import com.kikulabs.noteusingroom.fragment.PersonalNotesFragment
-import com.kikulabs.noteusingroom.fragment.StudyNotesFragment
-import com.kikulabs.noteusingroom.fragment.WorkNotesFragment
+import com.kikunote.R
+import com.kikunote.fragment.AllNotesFragment
+import com.kikunote.fragment.PersonalNotesFragment
+import com.kikunote.fragment.StudyNotesFragment
+import com.kikunote.fragment.WorkNotesFragment
 
 class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
@@ -20,10 +20,14 @@ class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) :
     override fun getItem(position: Int): Fragment {
         var fragment: Fragment? = null
         when (position) {
-            0 -> fragment = AllNotesFragment()
-            1 -> fragment = PersonalNotesFragment()
-            2 -> fragment = WorkNotesFragment()
-            3 -> fragment = StudyNotesFragment()
+            0 -> fragment =
+                AllNotesFragment()
+            1 -> fragment =
+                PersonalNotesFragment()
+            2 -> fragment =
+                WorkNotesFragment()
+            3 -> fragment =
+                StudyNotesFragment()
         }
         return fragment as Fragment
     }

@@ -1,4 +1,4 @@
-package com.kikulabs.noteusingroom.activity
+package com.kikunote.activity
 
 import android.content.Intent
 import android.graphics.Color
@@ -12,11 +12,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.kikulabs.noteusingroom.R
-import com.kikulabs.noteusingroom.adapter.NoteAdapter
-import com.kikulabs.noteusingroom.databinding.ActivitySearchBinding
-import com.kikulabs.noteusingroom.entity.Note
-import com.kikulabs.noteusingroom.viewModel.NotesViewModel
+import com.kikunote.R
+import com.kikunote.adapter.NoteAdapter
+import com.kikunote.databinding.ActivitySearchBinding
+import com.kikunote.entity.Note
+import com.kikunote.viewModel.NotesViewModel
 import kotlinx.android.synthetic.main.toolbar_search.*
 
 class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View.OnClickListener {

@@ -1,12 +1,12 @@
-package com.kikulabs.noteusingroom.activity
+package com.kikunote.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.kikulabs.noteusingroom.R
-import com.kikulabs.noteusingroom.adapter.SectionsPagerAdapter
-import com.kikulabs.noteusingroom.databinding.ActivityMainBinding
+import com.kikunote.R
+import com.kikunote.adapter.SectionsPagerAdapter
+import com.kikunote.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -24,10 +24,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initView() {
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(
-            this,
-            supportFragmentManager
-        )
+        val sectionsPagerAdapter =
+            SectionsPagerAdapter(
+                this,
+                supportFragmentManager
+            )
         binding.viewPager.adapter = sectionsPagerAdapter
         binding.tabs.setupWithViewPager(view_pager)
 

@@ -1,4 +1,4 @@
-package com.kikulabs.noteusingroom.fragment
+package com.kikunote.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,14 +10,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.kikulabs.noteusingroom.activity.DetailNoteActivity
-import com.kikulabs.noteusingroom.adapter.NoteAdapter
-import com.kikulabs.noteusingroom.databinding.FragmentPersonalNotesBinding
-import com.kikulabs.noteusingroom.entity.Note
-import com.kikulabs.noteusingroom.viewModel.NotesViewModel
+import com.kikunote.activity.DetailNoteActivity
+import com.kikunote.adapter.NoteAdapter
+import com.kikunote.databinding.FragmentStudyNotesBinding
+import com.kikunote.entity.Note
+import com.kikunote.viewModel.NotesViewModel
 
-class PersonalNotesFragment : Fragment() {
-    private var _binding: FragmentPersonalNotesBinding? = null
+class StudyNotesFragment : Fragment() {
+    private var _binding: FragmentStudyNotesBinding? = null
     private val binding get() = _binding!!
     private lateinit var listNoteAdapter: NoteAdapter
     private lateinit var notesViewModel: NotesViewModel
@@ -26,7 +26,7 @@ class PersonalNotesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPersonalNotesBinding.inflate(inflater, container, false)
+        _binding = FragmentStudyNotesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -41,13 +41,13 @@ class PersonalNotesFragment : Fragment() {
 
     private fun initView() {
 
-        binding.rvPersonal.setHasFixedSize(true)
+        binding.rvStudy.setHasFixedSize(true)
         listNoteAdapter = NoteAdapter()
         listNoteAdapter.notifyDataSetChanged()
 
-        binding.rvPersonal.layoutManager =
+        binding.rvStudy.layoutManager =
             StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
-        binding.rvPersonal.adapter = listNoteAdapter
+        binding.rvStudy.adapter = listNoteAdapter
 
         listNoteAdapter.setOnClicked(object : NoteAdapter.NoteListener {
             override fun onItemClicked(note: Note) {
@@ -64,7 +64,6 @@ class PersonalNotesFragment : Fragment() {
         notesViewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
 
         notesViewModel.getNotes().observe(viewLifecycleOwner, Observer { notes ->
-
             if (notes.isNotEmpty()) {
                 binding.textViewNoteEmpty.visibility = View.GONE
             } else {
@@ -73,10 +72,11 @@ class PersonalNotesFragment : Fragment() {
 
             listNoteAdapter.setData(notes)
         })
+
     }
 
     private fun initListener() {
-        notesViewModel.setNotesByLabel("Personal")
+        notesViewModel.setNotesByLabel("Study")
     }
 
     override fun onResume() {

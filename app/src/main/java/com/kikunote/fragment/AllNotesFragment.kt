@@ -1,4 +1,4 @@
-package com.kikulabs.noteusingroom.fragment
+package com.kikunote.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,14 +10,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.kikulabs.noteusingroom.activity.DetailNoteActivity
-import com.kikulabs.noteusingroom.adapter.NoteAdapter
-import com.kikulabs.noteusingroom.databinding.FragmentWorkNotesBinding
-import com.kikulabs.noteusingroom.entity.Note
-import com.kikulabs.noteusingroom.viewModel.NotesViewModel
+import com.kikunote.activity.DetailNoteActivity
+import com.kikunote.adapter.NoteAdapter
+import com.kikunote.databinding.FragmentAllNotesBinding
+import com.kikunote.entity.Note
+import com.kikunote.viewModel.NotesViewModel
 
-class WorkNotesFragment : Fragment() {
-    private var _binding: FragmentWorkNotesBinding? = null
+class AllNotesFragment : Fragment() {
+    private var _binding: FragmentAllNotesBinding? = null
     private val binding get() = _binding!!
     private lateinit var listNoteAdapter: NoteAdapter
     private lateinit var notesViewModel: NotesViewModel
@@ -26,7 +26,7 @@ class WorkNotesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentWorkNotesBinding.inflate(inflater, container, false)
+        _binding = FragmentAllNotesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -41,13 +41,12 @@ class WorkNotesFragment : Fragment() {
 
     private fun initView() {
 
-        binding.rvWork.setHasFixedSize(true)
+        binding.rvAll.setHasFixedSize(true)
         listNoteAdapter = NoteAdapter()
         listNoteAdapter.notifyDataSetChanged()
 
-        binding.rvWork.layoutManager =
-            StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
-        binding.rvWork.adapter = listNoteAdapter
+        binding.rvAll.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        binding.rvAll.adapter = listNoteAdapter
 
         listNoteAdapter.setOnClicked(object : NoteAdapter.NoteListener {
             override fun onItemClicked(note: Note) {
@@ -76,8 +75,8 @@ class WorkNotesFragment : Fragment() {
 
     }
 
-    private fun initListener() {
-        notesViewModel.setNotesByLabel("Work")
+    private fun initListener(){
+        notesViewModel.setNotes()
     }
 
     override fun onResume() {

@@ -1,4 +1,4 @@
-package com.kikulabs.noteusingroom.entity
+package com.kikunote.entity
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

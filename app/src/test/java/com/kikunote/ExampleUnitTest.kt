@@ -1,4 +1,4 @@
-package com.kikulabs.noteusingroom
+package com.kikunote
 
 import org.junit.Test
 

@@ -25,7 +25,7 @@ android {
     signingConfigs {
         release {
             storeFile file('/Users/rizki/Documents/Keystore/YOUR-KEYSTORE')
-            storePassword 'YOUR-SATORE-PASSWORD'
+            storePassword 'YOUR-STORE-PASSWORD'
             keyAlias = 'YOUR-KEY-ALIAS'
             keyPassword 'YOUR-KEY-PASSWORD'
         }

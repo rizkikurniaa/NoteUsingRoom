@@ -1,6 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Kikunote</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_all">All</string>
     <string name="tab_personal">Personal</string>
     <string name="tab_work">Work</string>

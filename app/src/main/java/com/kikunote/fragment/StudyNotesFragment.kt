@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -64,11 +65,7 @@ class StudyNotesFragment : Fragment() {
         notesViewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
 
         notesViewModel.getNotes().observe(viewLifecycleOwner, Observer { notes ->
-            if (notes.isNotEmpty()) {
-                binding.textViewNoteEmpty.visibility = View.GONE
-            } else {
-                binding.textViewNoteEmpty.visibility = View.VISIBLE
-            }
+            binding.textViewNoteEmpty.isVisible = notes.isEmpty()
 
             listNoteAdapter.setData(notes)
         })

@@ -89,8 +89,12 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View
         nib_back.setOnClickListener(this)
     }
 
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        TODO("Not yet implemented")
+    override fun onQueryTextSubmit(keyWord: String?): Boolean {
+        if (keyWord != null) {
+            notesViewModel.setNotesByTitle("%${keyWord}%")
+        }
+
+        return true
     }
 
     override fun onQueryTextChange(keyWord: String?): Boolean {

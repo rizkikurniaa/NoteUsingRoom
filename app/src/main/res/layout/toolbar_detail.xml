@@ -37,6 +37,7 @@
             style="@style/Widget.Neumorph.ImageButton"
             android:layout_width="68dp"
             android:layout_height="68dp"
+            android:contentDescription="@string/edit"
             android:scaleType="centerInside"
             android:src="@drawable/ic_edit"
             app:layout_constraintBottom_toBottomOf="parent"

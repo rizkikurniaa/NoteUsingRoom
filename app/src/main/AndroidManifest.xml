@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kikunote">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -12,7 +11,8 @@
         <activity android:name="com.kikunote.activity.DetailNoteActivity"/>
         <activity android:name="com.kikunote.activity.SearchActivity" />
         <activity android:name="com.kikunote.activity.EditActivity" />
-        <activity android:name="com.kikunote.activity.MainActivity">
+        <activity android:name="com.kikunote.activity.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

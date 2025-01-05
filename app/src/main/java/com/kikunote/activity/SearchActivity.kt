@@ -17,7 +17,6 @@ import com.kikunote.adapter.NoteAdapter
 import com.kikunote.databinding.ActivitySearchBinding
 import com.kikunote.entity.Note
 import com.kikunote.viewModel.NotesViewModel
-import kotlinx.android.synthetic.main.toolbar_search.*
 
 class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View.OnClickListener {
     private lateinit var binding: ActivitySearchBinding
@@ -35,20 +34,20 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View
     }
 
     private fun initView() {
-        val searchPlateId: Int = search_notes.context.resources
+        val searchPlateId: Int = binding.toolbar.searchNotes.context.resources
             .getIdentifier("android:id/search_plate", null, null)
         val searchPlate: View =
-            search_notes.findViewById(searchPlateId)
+            binding.toolbar.searchNotes.findViewById(searchPlateId)
         searchPlate.setBackgroundColor(Color.TRANSPARENT)
 
-        val linearLayout1 = search_notes.getChildAt(0) as LinearLayout
+        val linearLayout1 = binding.toolbar.searchNotes.getChildAt(0) as LinearLayout
         val linearLayout2 = linearLayout1.getChildAt(2) as LinearLayout
         val linearLayout3 = linearLayout2.getChildAt(1) as LinearLayout
         val autoComplete = linearLayout3.getChildAt(0) as AutoCompleteTextView
         autoComplete.textSize = 14f
 
-        search_notes.setOnQueryTextListener(this)
-        search_notes.isFocusable = false
+        binding.toolbar.searchNotes.setOnQueryTextListener(this)
+        binding.toolbar.searchNotes.isFocusable = false
 
         binding.rvNotes.setHasFixedSize(true)
         listNoteAdapter = NoteAdapter()
@@ -86,7 +85,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View
 
     private fun initListener() {
         notesViewModel.setNotes()
-        nib_back.setOnClickListener(this)
+        binding.toolbar.nibBack.setOnClickListener(this)
     }
 
     override fun onQueryTextSubmit(keyWord: String?): Boolean {

@@ -1,5 +1,9 @@
 # Note Using Room Database
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=rizkikurniaa/NoteUsingRoom&type=date&legend=top-left)](https://www.star-history.com/#rizkikurniaa/NoteUsingRoom&type=date&legend=top-left)
+
 <h3 align="left">Light mode:</h3>
 <p align="left"> 
 <img src="https://github.com/rizkikurniaa/NoteUsingRoom/blob/master/ss-home-light.jpg" width="250"> <img src="https://github.com/rizkikurniaa/NoteUsingRoom/blob/master/ss-detail-light.jpg" width="250"> <img src="https://github.com/rizkikurniaa/NoteUsingRoom/blob/master/ss-edit-light.jpg" width="250">
